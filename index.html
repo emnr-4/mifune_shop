@@ -478,6 +478,11 @@
         };
     </script>
     <script>
+        $(document).on('closed', '.remodal', function (e) {
+            location.href = "#lineup";
+        });
+    </script>
+    <!-- <script>
         $(document).on('closing', '.remodal', function() {
     // 1. スクロール位置を即座に保存
     var scrollPos = $(window).scrollTop();
@@ -493,7 +498,23 @@
         $(window).scrollTop(scrollPos);
     }, 10); 
 });
-    </script>
+    </script> -->
+    <!-- <script>
+        $(document).on('closing', '.remodal', function() {
+    // 1. 閉じる瞬間の位置を保存
+    var scrollPos = $(window).scrollTop();
+    console.log('保存した位置:', scrollPos);
+
+    // 2. 閉じるアニメーションが終わる頃（600ms〜）に強制的に位置を戻す
+    setTimeout(function() {
+        $(window).scrollTop(scrollPos);
+        // iPhone対策：もう一度少しだけ遅らせて実行
+        setTimeout(function() {
+            window.scrollTo(0, scrollPos);
+        }, 50);
+    }, 600); // Remodalのアニメーション時間に合わせて調整
+});
+    </script> -->
     <script type="text/javascript" src="./Remodal-1.1.1/dist/"></script>
     <script type="text/javascript" src="./Remodal-1.1.1/dist/remodal.min.js"></script>
 </body>
