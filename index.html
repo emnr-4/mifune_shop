@@ -114,6 +114,8 @@
                                             <h4 class="tea_name font_sunserif">エメラルドモーニング</h4>
                                             <div>
                                                 <p class="icon"><a href="#modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p>
+                                                <!-- <p class="icon"><a href="javascript:void(0)" data-remodal-target="modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p> -->
+                                                <!-- <p class="icon"><a href="javascript:void(0)" data-remodal-target="modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p> -->
                                                 <div class="remodal" data-remodal-id="modal_01">
                                                     <p class="close_remodal icon" data-remodal-action="close"><img src="./images/close.svg" alt=""></p>
                                                     <h3 class="sub_title">
@@ -471,5 +473,16 @@
     </script>
     <script type="text/javascript" src="./Remodal-1.1.1/dist/"></script>
     <script type="text/javascript" src="./Remodal-1.1.1/dist/remodal.min.js"></script>
+    <script>
+        $(document).on('closing', '.remodal', function (e) {
+    // モーダルが閉じる瞬間に、ブラウザのURL書き換えによるスクロールを防止
+        setTimeout(function() {
+            // 現在のスクロール位置を強制的に維持
+            let scrollPos = $(window).scrollTop();
+            window.location.hash = ""; // ハッシュを消す
+            $(window).scrollTop(scrollPos); // 消した瞬間に元の位置に戻す
+            }, 0);
+        });
+    </script>
 </body>
 </html>
