@@ -113,11 +113,11 @@
                                         <div class="tea_title">
                                             <h4 class="tea_name font_sunserif">エメラルドモーニング</h4>
                                             <div>
-                                                <p class="icon"><a href="#modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p>
-                                                <!-- <p class="icon"><a href="javascript:void(0)" data-remodal-target="modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p> -->
-                                                <!-- <p class="icon"><a href="javascript:void(0)" data-remodal-target="modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p> -->
+                                                <!-- <p class="icon"><a href="#modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p> -->
+                                                <p class="icon"><a href="javascript:void(0)" data-remodal-target="modal_01"><img src="./images/info.svg" alt="モーダルボタン"></a></p>
                                                 <div class="remodal" data-remodal-id="modal_01">
-                                                    <p class="close_remodal icon cancel" data-remodal-action="cancel"><img src="./images/close.svg" alt=""></p>
+                                                    <!-- <p class="close_remodal icon " data-remodal-action="close"><img src="./images/close.svg" alt=""></p> -->
+                                                    <button data-remodal-action="close" class="remodal-close"></button>
                                                     <h3 class="sub_title">
                                                         <p class="icon"><img src="./images/icon/routine_gray.svg" alt="太陽マーク"></p>
                                                         <p class="font_sunserif">Morning tea</p>
@@ -471,18 +471,30 @@
             variableWidth: true,
         });
     </script>
+    <script>
+        // Remodal本体が動く前に「URLはいじらないで！」と予約します
+        window.REMODAL_GLOBALS = {
+            hashTracking: false,
+        };
+    </script>
+    <script>
+        $(document).on('closing', '.remodal', function() {
+    // 1. スクロール位置を即座に保存
+    var scrollPos = $(window).scrollTop();
+
+    // 2. URLから「#」以降を消し去り、履歴をクリーンにする（ページは動かさない）
+    if (window.history && window.history.replaceState) {
+        history.replaceState('', document.title, window.location.pathname + window.location.search);
+    }
+
+    // 3. 【重要】0.01秒だけ待ってから、保存した位置へ強制的に引き戻す
+    // Remodal自体の「#を消そうとする挙動」が終わった後に上書きするためです
+    setTimeout(function() {
+        $(window).scrollTop(scrollPos);
+    }, 10); 
+});
+    </script>
     <script type="text/javascript" src="./Remodal-1.1.1/dist/"></script>
     <script type="text/javascript" src="./Remodal-1.1.1/dist/remodal.min.js"></script>
-    <!-- <script>
-        $(document).on('closing', '.remodal', function (e) {
-    // モーダルが閉じる瞬間に、ブラウザのURL書き換えによるスクロールを防止
-        setTimeout(function() {
-            // 現在のスクロール位置を強制的に維持
-            let scrollPos = $(window).scrollTop();
-            window.location.hash = ""; // ハッシュを消す
-            $(window).scrollTop(scrollPos); // 消した瞬間に元の位置に戻す
-            }, 0);
-        });
-    </script> -->
 </body>
 </html>
