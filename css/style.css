@@ -110,6 +110,9 @@ button{
     padding: 8px 24px 9px;
     border-radius: 1000px;
 }
+.txt_wt{
+    color: white;
+}
 
 /* sp表示//////////////////////////////////// */
 .pc{
@@ -318,10 +321,6 @@ h1 img{
 .teasets2{
     background-color: #1A4472;
 }
-.teasets2 .tea p,
-.teasets2 .tea h4{
-    color: white;
-}
 /* セクション3 */
 .section3{
     padding-block: 80px 40px;
@@ -340,6 +339,10 @@ h1 img{
 }
 .slick-slide{
     width: auto;
+}
+.slick-slider{
+    width: 100%;
+    overflow: hidden;
 }
 /* セクション4 */
 .section4{
@@ -468,43 +471,20 @@ small{
 .close_remodal{
     margin-left: auto;
 }
-.remodal .sub_title{
-    color: #747981;
-}
+
 .modal_teaname{
     font-size: 1.8rem;
     color: #1A4472;
     font-weight: 450;
     margin-bottom: 32px;
 }
-.remodal p,
+/* .remodal p,
 .remodal h4,
 .remodal ul li{
     text-align: left !important;
-}
-.remodal h4{
-    font-size: 1.6rem;
-    font-weight: 450;
-    margin-bottom: 8px;
-}
-.remodal ul li{
-    font-size: 1.5rem;
-    color: #1A4472;
-    padding-left: 18px;
-    position: relative;
-}
-.remodal ul li::before{
-    content: "";
-    display: block;
-    width: 14px;
-    height: 14px;
-    background-color: #E1E7F2;
-    border-radius: 100px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-}
+} */
+
+
 .remodal.remodal-is-opening{
     animation-duration: 0.8s !important;
 }
@@ -522,6 +502,73 @@ small{
     max-width: 100vw;
     box-sizing: border-box;
 }
+
+/* 練習モーダル */
+.modal_open{
+    cursor: pointer;
+}
+.modalArea {
+  display: none;
+  position: fixed;
+  z-index: 999; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 400px;
+  padding: 40px 32px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.closeModal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+.modalContents .sub_title{
+    color: #747981;
+}
+.modalContents h4{
+    font-size: 1.6rem;
+    font-weight: 450;
+    margin-bottom: 8px;
+}
+.modalContents ul li{
+    font-size: 1.5rem;
+    color: #1A4472;
+    padding-left: 18px;
+    position: relative;
+}
+.modalContents ul li::before{
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #E1E7F2;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+
+
+
+
 
 /* 半端なデバイスのデザイン/////////////////////// */
 @media screen and (min-width:500px){
