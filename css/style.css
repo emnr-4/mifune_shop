@@ -110,9 +110,57 @@ button{
     padding: 8px 24px 9px;
     border-radius: 1000px;
 }
+.tea_bottom button:hover{
+    background-color: #BF9B26;
+    transition: 0.5s;
+}
+.form_submit button:hover{
+    opacity: 0.5;
+    transition: 0.5s;
+}
 .txt_wt{
     color: white;
 }
+
+/* fadeIn */
+.fadeIn_up {
+  opacity: 0;
+  transform: translate(0, 8%);
+  transition: 2s;
+}
+.fadeIn_right{
+    opacity: 0;
+    transform: translateX(4%);
+    transition: 2s;
+}
+.fadeIn,
+.fade-item{
+    opacity: 0;
+    transition: 2s;
+}
+.fadeIn_up.is-show,
+.fadeIn_right.is-show{
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.fadeIn.is-show,
+.fade-item.is-show{
+    opacity: 1;
+}
+.fv_sub.fadeIn_up{
+    opacity: 0;
+    transform: translate(0, 8%);
+    transition: 2s;
+    transition-delay: 1s;
+}
+.fv_sub.fadeIn_up.is-show{
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.fade-item.is-show:nth-child(1) { transition-delay: 0.2s; }
+.fade-item.is-show:nth-child(2) { transition-delay: 0.6s; }
+.fade-item.is-show:nth-child(3) { transition-delay: 0.4s; }
 
 /* sp表示//////////////////////////////////// */
 .pc{
@@ -199,6 +247,10 @@ button{
 .nav_menu_ul li{
     font-size: 1.6rem;
 }
+.nav_menu_li a:hover{
+    opacity: 0.5;
+    transition: 0.3s;
+}
 header nav ul li a{
     font-size: 2.6rem;
     color: #333;
@@ -232,6 +284,7 @@ h1 img{
 }
 .fv h2{
     font-size: 1.6rem;
+    margin-top: 4px;
 }
 .title{
     padding-block:40px 20px;
@@ -245,12 +298,13 @@ h1 img{
 .title span{
     color: #D4AF37;
 }
+
 /* セクション1 */
 .section1{
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 80px 20px;
+    padding: 160px 20px 88px;
 }
 .section1 h2{
     font-size: 1.8rem;
@@ -259,7 +313,7 @@ h1 img{
 .long_p{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     font-size: 1.5rem;
 }
 /* セクション2 */
@@ -376,9 +430,11 @@ textarea{
     color: #747981;
 }
 .form_submit button{
+    display: block;
     color: #1A4472;
     background-color: #EBF1FC;
     border: 1px #1A4472 solid;
+    margin: 0 auto;
 }
 /* セクション5 */
 .section5{
@@ -462,49 +518,12 @@ small{
     font-size: 1.3rem;
     margin: 0 auto;
 }
-/* モーダルウィンドウ */
-.remodal{
-    width: 100%;
-    max-width: 400px !important;
-    border-radius: 8px;
-}
-.close_remodal{
-    margin-left: auto;
-}
 
-.modal_teaname{
-    font-size: 1.8rem;
-    color: #1A4472;
-    font-weight: 450;
-    margin-bottom: 32px;
-}
-/* .remodal p,
-.remodal h4,
-.remodal ul li{
-    text-align: left !important;
-} */
-
-
-.remodal.remodal-is-opening{
-    animation-duration: 0.8s !important;
-}
-.remodal.remodal-is-closing{
-    animation-duration: 0.6s !important;
-}
-.remodal-overlay.remodal-is-opening{
-    animation-duration: 1.0s !important;
-}
-.remodal-overlay{
-    background-color: rgba(0, 0, 0, 65%) !important;
-}
-.remodal-wrapper{
-    width: 100vw;
-    max-width: 100vw;
-    box-sizing: border-box;
-}
-
-/* 練習モーダル */
+/* モーダル */
 .modal_open{
+    display: flex;
+    align-items: center;
+    width: 18px;
     cursor: pointer;
 }
 .modalArea {
@@ -541,6 +560,13 @@ small{
 .modalContents .sub_title{
     color: #747981;
 }
+.sub_title .font_sunserif{
+    font-size: 1.6rem;
+}
+.modal_teaname{
+    font-size: 2.0rem;
+    margin-bottom: 32px;
+}
 .modalContents h4{
     font-size: 1.6rem;
     font-weight: 450;
@@ -564,11 +590,6 @@ small{
     left: 0;
     transform: translateY(-50%);
 }
-
-
-
-
-
 
 /* 半端なデバイスのデザイン/////////////////////// */
 @media screen and (min-width:500px){
@@ -712,9 +733,8 @@ small{
     header{
         display: none !important;
     }
-    .fv,
-    .section1{
-        padding-inline: 50px;
+    .fv{
+        padding: 32px 50px;
     }
     .pc_nav{
         display: flex;
@@ -733,7 +753,7 @@ small{
     }
     /* セクション1 */
     .section1{
-        padding-block: 112px;
+        padding-inline: 50px;
     }
     .section1 img{
         max-width: 320px;
